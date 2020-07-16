@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
+import { FormGroup, TextField, Button } from '@material-ui/core';
 import { validateForm, submitForm } from '../../helperFunctions';
+import FormSelect from './FormSelect';
+
+import { formStyles } from './FormStyles/FormStyles';
 
 const EventSignUpForm: React.FC = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [company, setCompany] = useState('');
-  const [role, setRole] = useState('investor');
+  const [role, setRole] = useState('');
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -20,67 +24,62 @@ const EventSignUpForm: React.FC = () => {
     };
 
     validateForm(eventFormBody);
-    // console.log(submitForm(eventFormBody));
+    // console.log(submitForm(eventFormBody))
+    submitForm(eventFormBody);
   };
 
   return (
     <form className="EventSignUpForm" onSubmit={handleSubmit}>
-      <label>
-        First Name:
-        <input
-          type="text"
-          name="firstName"
-          value={firstName}
-          onChange={(e) => {
-            setFirstName(e.target.value);
-          }}
-        />
-      </label>
-      <label>
-        Last Name:
-        <input
-          type="text"
-          name="lastName"
-          value={lastName}
-          onChange={(e) => {
-            setLastName(e.target.value);
-          }}
-        />
-      </label>
-      <label>
-        Email:
-        <input
-          type="text"
-          name="email"
+      <FormGroup>
+        <div>
+          <TextField
+            inputProps={{ style: formStyles.textField }}
+            label="First Name"
+            variant="filled"
+            value={firstName}
+            onChange={(e) => {
+              setFirstName(e.target.value);
+            }}
+            required
+          />
+          <TextField
+            inputProps={{ style: formStyles.textField }}
+            label="Last Name"
+            variant="filled"
+            value={lastName}
+            onChange={(e) => {
+              setLastName(e.target.value);
+            }}
+            required
+          />
+        </div>
+        <TextField
+          inputProps={{ style: formStyles.textField }}
+          label="E-mail"
+          variant="filled"
+          type="email"
           value={email}
           onChange={(e) => {
             setEmail(e.target.value);
           }}
+          required
         />
-      </label>
-      <label>
-        Company:
-        <input
-          type="text"
-          name="company"
+        <TextField
+          inputProps={{ style: formStyles.textField }}
+          label="Company"
+          variant="filled"
           value={company}
           onChange={(e) => {
             setCompany(e.target.value);
           }}
+          required
         />
-      </label>
-      <select
-        value={role}
-        onChange={(e) => {
-          setRole(e.target.value);
-        }}
-      >
-        <option value="investor">Investor</option>
-        <option value="mentor">Mentor</option>
-        <option value="founder">Founder</option>
-        <option value="networkMember">Network Member</option>
-      </select>
-      <input type="submit" value="Submit" />
+      </FormGroup>
+      <FormSelect role={role} setRole={setRole} styles={formStyles} />
+
+      <Button style={formStyles.button} type="submit" value="Submit">
+        Submit
+      </Button>
     </form>
   );
 };
