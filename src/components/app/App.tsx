@@ -19,7 +19,7 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme}>
       <SnackbarProvider>
         <div className="App">
-          <section className="App-logo-form">
+          <section className="App-logo-form-container" data-testid="app">
             <img src={logo} className="App-logo" alt="logo" />
             <EventTitle />
             <EventSignUpForm />

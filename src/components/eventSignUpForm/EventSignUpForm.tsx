@@ -53,7 +53,7 @@ const EventSignUpForm: React.FC = () => {
 
   return (
     <form className="EventSignUpForm" onSubmit={handleSubmit}>
-      <FormGroup>
+      <FormGroup role="form">
         <div className="textfield-container">
           <TextField
             name="firstName"

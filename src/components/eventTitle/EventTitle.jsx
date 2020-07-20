@@ -5,7 +5,7 @@ import './styles/EventTitle.css';
 
 const EventTitle = () => {
   // Create array for React Spring to map
-  const title = [`Annual`, `Pancake`, `Festival`];
+  const title = [`Annual`, `Pancake`, `Event`];
   // Title animation
   const titleSpring = useTrail(title.length, {
     from: {

@@ -10,7 +10,7 @@
   pointer-events: none;
 }
 
-.App-logo-form {
+.App-logo-form-container {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;

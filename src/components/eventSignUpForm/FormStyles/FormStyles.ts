@@ -1,17 +1,17 @@
 const white: string = '#FFFFFFF';
-const lime: string = '#38C463';
+const phosphorGreen: string = '#38C463';
 
 export const formStyles = {
   textField: {
     fontFamily: 'Arial',
-    color: lime,
+    color: phosphorGreen,
   },
   dropDown: {
-    color: lime,
+    color: phosphorGreen,
     backgroundColor: '#282C34',
   },
   button: {
-    color: lime,
+    color: phosphorGreen,
     backgroundColor: '#24282E',
     padding: '10px 20px',
     fontWeight: 600,
@@ -39,7 +39,7 @@ export const overrideMaterialUIFormStyles = {
       color: white,
       '&$focused': {
         // increase the specificity for the pseudo class
-        color: lime,
+        color: phosphorGreen,
       },
     },
   },
@@ -52,7 +52,7 @@ export const overrideMaterialUIFormStyles = {
     },
     underline: {
       '&::after': {
-        borderBottom: `2px solid ${lime}`,
+        borderBottom: `2px solid ${phosphorGreen}`,
       },
     },
   },
@@ -65,7 +65,7 @@ export const overrideMaterialUIFormStyles = {
     },
     underline: {
       '&::after': {
-        borderBottom: `2px solid ${lime}`,
+        borderBottom: `2px solid ${phosphorGreen}`,
       },
     },
   },
@@ -79,7 +79,7 @@ export const overrideMaterialUIFormStyles = {
       color: 'white',
     },
     select: {
-      color: lime,
+      color: phosphorGreen,
       marginTop: '8px',
     },
   },
