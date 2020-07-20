@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useFormFields } from '../../hooks/useFormFields';
 import { FormGroup, TextField, Button } from '@material-ui/core';
 import { validateForm, submitForm } from '../../helperFunctions';
 import FormSelect from './FormSelect';
@@ -6,26 +7,19 @@ import FormSelect from './FormSelect';
 import { formStyles } from './FormStyles/FormStyles';
 
 const EventSignUpForm: React.FC = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [company, setCompany] = useState('');
-  const [role, setRole] = useState('');
+  const [values, handleChange] = useFormFields({
+    firstName: '',
+    lastName: '',
+    email: '',
+    company: '',
+    role: '',
+  });
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const eventFormBody = {
-      firstName,
-      lastName,
-      email,
-      company,
-      role,
-    };
-
-    validateForm(eventFormBody);
-    // console.log(submitForm(eventFormBody))
-    submitForm(eventFormBody);
+    validateForm(values);
+    submitForm(values);
+    console.log(submitForm(values));
   };
 
   return (
@@ -33,49 +27,52 @@ const EventSignUpForm: React.FC = () => {
       <FormGroup>
         <div>
           <TextField
+            name="firstName"
             inputProps={{ style: formStyles.textField }}
             label="First Name"
             variant="filled"
-            value={firstName}
-            onChange={(e) => {
-              setFirstName(e.target.value);
-            }}
+            value={values.firstName}
+            onChange={handleChange}
             required
           />
           <TextField
+            name="lastName"
             inputProps={{ style: formStyles.textField }}
             label="Last Name"
             variant="filled"
-            value={lastName}
-            onChange={(e) => {
-              setLastName(e.target.value);
-            }}
+            value={values.lastName}
+            onChange={handleChange}
             required
           />
         </div>
+
         <TextField
+          name="email"
           inputProps={{ style: formStyles.textField }}
           label="E-mail"
           variant="filled"
           type="email"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
+          value={values.email}
+          onChange={handleChange}
           required
         />
-        <TextField
-          inputProps={{ style: formStyles.textField }}
-          label="Company"
-          variant="filled"
-          value={company}
-          onChange={(e) => {
-            setCompany(e.target.value);
-          }}
-          required
-        />
+        <div style={formStyles.flexContainer}>
+          <TextField
+            name="company"
+            inputProps={{ style: formStyles.textField }}
+            label="Company"
+            variant="filled"
+            value={values.company}
+            onChange={handleChange}
+            required
+          />
+          <FormSelect
+            role={values.role}
+            handleChange={handleChange}
+            styles={formStyles}
+          />
+        </div>
       </FormGroup>
-      <FormSelect role={role} setRole={setRole} styles={formStyles} />
 
       <Button style={formStyles.button} type="submit" value="Submit">
         Submit

@@ -9,26 +9,24 @@ import { formStyles } from './FormStyles/FormStyles';
 
 interface Props {
   role: string;
-  setRole: any;
-  styles: any;
+  styles: object;
+  handleChange: (
+    event: React.ChangeEvent<{ name?: string | undefined; value: unknown }>
+  ) => void;
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120,
+    minWidth: 170,
   },
   dropDownStyles: formStyles.dropDown,
 }));
 
-const FormSelect: React.FC<Props> = ({ role, setRole }) => {
-  const [open, setOpen] = useState(false);
+const FormSelect: React.FC<Props> = ({ role, handleChange }) => {
+  const [open, setOpen] = useState<boolean>(false);
 
   const classes = useStyles();
-
-  const handleChange = (event: any) => {
-    setRole(event.target.value);
-  };
 
   const handleClose = () => {
     setOpen(false);
@@ -41,22 +39,23 @@ const FormSelect: React.FC<Props> = ({ role, setRole }) => {
   return (
     <div className="FormSelect">
       <FormControl className={classes.formControl}>
-        <InputLabel id="demo-controlled-open-select-label">Role</InputLabel>
+        <InputLabel id="rol-open-select-label">Role</InputLabel>
         <Select
-          labelId="demo-controlled-open-select-label"
-          id="demo-controlled-open-select"
+          name="role"
+          labelId="rol-open-select-label"
+          id="rol-open-select"
           open={open}
           onClose={handleClose}
           onOpen={handleOpen}
           value={role}
           onChange={handleChange}
-          required
           MenuProps={{ classes: { paper: classes.dropDownStyles } }}
+          required
         >
-          <MenuItem value={'investor'}>Investor</MenuItem>
-          <MenuItem value={'mentor'}>Mentor</MenuItem>
-          <MenuItem value={'founder'}>Founder</MenuItem>
-          <MenuItem value={'networkMember'}>Network Member</MenuItem>
+          <MenuItem value={'Investor'}>Investor</MenuItem>
+          <MenuItem value={'Mentor'}>Mentor</MenuItem>
+          <MenuItem value={'Founder'}>Founder</MenuItem>
+          <MenuItem value={'Network Member'}>Network Member</MenuItem>
         </Select>
       </FormControl>
     </div>

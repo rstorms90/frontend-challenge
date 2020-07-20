@@ -16,8 +16,30 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  background: linear-gradient(
+    -45deg,
+    #38c463,
+    #424242,
+    #111111,
+    #0c0c0c,
+    #000000
+  );
+  background-size: 400% 400%;
+  animation: movingGradient 15s ease infinite;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+@keyframes movingGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
