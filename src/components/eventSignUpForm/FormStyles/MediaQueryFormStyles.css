@@ -1,0 +1,12 @@
+@media only screen and (max-width: 399px) {
+  .textfield-container .MuiTextField-root {
+    width: 100% !important;
+  }
+  .company-role-container {
+    display: block !important;
+  }
+  .company-role-container .MuiTextField-root,
+  .company-role-container .MuiFormControl-root {
+    width: 100% !important;
+  }
+}

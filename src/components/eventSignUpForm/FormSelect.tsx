@@ -21,7 +21,7 @@ type handleChangeEvent = React.ChangeEvent<{
 const useStyles = makeStyles((theme: Theme) => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 170,
+    minWidth: 130,
   },
   dropDownStyles: formStyles.dropDown,
 }));

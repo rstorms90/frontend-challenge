@@ -1,5 +1,5 @@
-const white = '#FFFFFFF';
-const lime = '#38C463';
+const white: string = '#FFFFFFF';
+const lime: string = '#38C463';
 
 export const formStyles = {
   textField: {
@@ -26,7 +26,12 @@ export const formStyles = {
 export const overrideMaterialUIFormStyles = {
   MuiFormGroup: {
     root: {
-      paddingBottom: '15px',
+      padding: '0 10px 15px 10px',
+    },
+  },
+  MuiFormControl: {
+    root: {
+      width: '100%',
     },
   },
   MuiInputLabel: {

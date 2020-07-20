@@ -8,6 +8,7 @@ import { SnackbarContext } from '../../context/SnackBarContext';
 import Snackbar from '../snackbar/Snackbar';
 
 import { formStyles } from './FormStyles/FormStyles';
+import './FormStyles/MediaQueryFormStyles.css';
 
 const EventSignUpForm: React.FC = () => {
   const {
@@ -53,7 +54,7 @@ const EventSignUpForm: React.FC = () => {
   return (
     <form className="EventSignUpForm" onSubmit={handleSubmit}>
       <FormGroup>
-        <div>
+        <div className="textfield-container">
           <TextField
             name="firstName"
             inputProps={{ style: formStyles.textField }}
@@ -71,16 +72,21 @@ const EventSignUpForm: React.FC = () => {
             onChange={handleChange}
           />
         </div>
+        <div className="textfield-container">
+          <TextField
+            name="email"
+            inputProps={{ style: formStyles.textField }}
+            label="E-mail"
+            variant="filled"
+            value={values.email ? values.email : ''}
+            onChange={handleChange}
+          />
+        </div>
 
-        <TextField
-          name="email"
-          inputProps={{ style: formStyles.textField }}
-          label="E-mail"
-          variant="filled"
-          value={values.email ? values.email : ''}
-          onChange={handleChange}
-        />
-        <div style={formStyles.flexContainer}>
+        <div
+          className="company-role-container"
+          style={formStyles.flexContainer}
+        >
           <TextField
             name="company"
             inputProps={{ style: formStyles.textField }}
