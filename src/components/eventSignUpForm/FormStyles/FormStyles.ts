@@ -1,17 +1,17 @@
 const white = '#FFFFFFF';
-const limeText = '#38C463';
+const lime = '#38C463';
 
 export const formStyles = {
   textField: {
     fontFamily: 'Arial',
-    color: limeText,
+    color: lime,
   },
   dropDown: {
-    color: limeText,
+    color: lime,
     backgroundColor: '#282C34',
   },
   button: {
-    color: limeText,
+    color: lime,
     backgroundColor: '#24282E',
     padding: '10px 20px',
     fontWeight: 600,
@@ -34,7 +34,7 @@ export const overrideMaterialUIFormStyles = {
       color: white,
       '&$focused': {
         // increase the specificity for the pseudo class
-        color: limeText,
+        color: lime,
       },
     },
   },
@@ -42,20 +42,39 @@ export const overrideMaterialUIFormStyles = {
     root: {
       color: white,
     },
+    input: {
+      borderBottom: `1px solid white`,
+    },
+    underline: {
+      '&::after': {
+        borderBottom: `2px solid ${lime}`,
+      },
+    },
+  },
+  MuiInput: {
+    root: {
+      color: white,
+    },
+    input: {
+      borderBottom: `1px solid white`,
+    },
+    underline: {
+      '&::after': {
+        borderBottom: `2px solid ${lime}`,
+      },
+    },
   },
   MuiFormLabel: {
     root: {
       color: white,
     },
   },
-  MuiInputBase: {
-    root: {
-      borderBottom: `1px solid ${white}`,
-    },
-  },
   MuiSelect: {
     icon: {
-      color: white,
+      color: 'white',
+    },
+    select: {
+      color: lime,
     },
   },
 };

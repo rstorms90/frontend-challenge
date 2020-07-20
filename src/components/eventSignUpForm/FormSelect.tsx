@@ -10,9 +10,7 @@ import { formStyles } from './FormStyles/FormStyles';
 interface Props {
   role: string;
   styles: object;
-  handleChange: (
-    event: React.ChangeEvent<{ name?: string | undefined; value: unknown }>
-  ) => void;
+  handleChange: (e: any) => void;
 }
 
 const useStyles = makeStyles((theme: Theme) => ({
