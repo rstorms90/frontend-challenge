@@ -48,7 +48,6 @@ const FormSelect: React.FC<Props> = ({ role, handleChange }) => {
           value={role}
           onChange={handleChange}
           MenuProps={{ classes: { paper: classes.dropDownStyles } }}
-          required
         >
           <MenuItem value={'Investor'}>Investor</MenuItem>
           <MenuItem value={'Mentor'}>Mentor</MenuItem>

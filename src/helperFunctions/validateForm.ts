@@ -1,4 +1,3 @@
-// use this function to validate your form
 interface eventSignUpFormBody {
   firstName: string;
   lastName: string;
@@ -7,22 +6,43 @@ interface eventSignUpFormBody {
   role: string;
 }
 
-export default (eventSignUpFormBody: eventSignUpFormBody) => {
+// use this function to validate your form
+export default (eventSignUpFormBody: eventSignUpFormBody, { ...snackbar }) => {
   const { firstName, lastName, email, company, role } = eventSignUpFormBody;
   const minimumLength: number = 2;
   const emailChecker = /^\S+@\S+\.\S+$/;
 
   if (firstName.length < minimumLength || lastName.length < minimumLength) {
-    alert('Please input your full name.');
+    snackbar.setMessage('Please input your full name.');
+    snackbar.setOpen(true);
+    snackbar.setSeverity('info');
+    return false;
   }
 
   if (!emailChecker.test(email)) {
-    alert('Please input a proper e-mail address.');
+    snackbar.setMessage('Please input a proper e-mail address.');
+    snackbar.setOpen(true);
+    snackbar.setSeverity('info');
+    return false;
   }
 
-  if (!company.length || !role.length) {
-    alert('Please input a company and role.');
+  if (!company.length) {
+    snackbar.setMessage('Please input a company.');
+    snackbar.setOpen(true);
+    snackbar.setSeverity('info');
+    return false;
   }
+
+  if (!role.length) {
+    snackbar.setMessage('Please input a role.');
+    snackbar.setOpen(true);
+    snackbar.setSeverity('info');
+    return false;
+  }
+
+  snackbar.setMessage('See you for the pancakes!');
+  snackbar.setOpen(true);
+  snackbar.setSeverity('success');
 
   return eventSignUpFormBody;
 };

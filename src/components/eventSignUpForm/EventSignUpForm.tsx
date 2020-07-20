@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useFormFields } from '../../hooks/useFormFields';
 import { FormGroup, TextField, Button } from '@material-ui/core';
 import { validateForm, submitForm } from '../../helperFunctions';
 import FormSelect from './FormSelect';
 
+import { SnackbarContext } from '../../context/SnackBarContext';
+import Snackbar from '../snackbar/Snackbar';
+
 import { formStyles } from './FormStyles/FormStyles';
 
 const EventSignUpForm: React.FC = () => {
+  const {
+    open,
+    severity,
+    message,
+    setOpen,
+    setSeverity,
+    setMessage,
+  } = useContext(SnackbarContext);
+
   const [values, handleChange] = useFormFields({
     firstName: '',
     lastName: '',
@@ -17,7 +29,14 @@ const EventSignUpForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    validateForm(values);
+    validateForm(values, {
+      open,
+      setOpen,
+      severity,
+      setSeverity,
+      message,
+      setMessage,
+    });
     submitForm(values);
     console.log(submitForm(values));
   };
@@ -33,7 +52,6 @@ const EventSignUpForm: React.FC = () => {
             variant="filled"
             value={values.firstName}
             onChange={handleChange}
-            required
           />
           <TextField
             name="lastName"
@@ -42,7 +60,6 @@ const EventSignUpForm: React.FC = () => {
             variant="filled"
             value={values.lastName}
             onChange={handleChange}
-            required
           />
         </div>
 
@@ -51,10 +68,8 @@ const EventSignUpForm: React.FC = () => {
           inputProps={{ style: formStyles.textField }}
           label="E-mail"
           variant="filled"
-          type="email"
           value={values.email}
           onChange={handleChange}
-          required
         />
         <div style={formStyles.flexContainer}>
           <TextField
@@ -64,7 +79,6 @@ const EventSignUpForm: React.FC = () => {
             variant="filled"
             value={values.company}
             onChange={handleChange}
-            required
           />
           <FormSelect
             role={values.role}
@@ -77,6 +91,7 @@ const EventSignUpForm: React.FC = () => {
       <Button style={formStyles.button} type="submit" value="Submit">
         Submit
       </Button>
+      <Snackbar />
     </form>
   );
 };
