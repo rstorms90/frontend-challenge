@@ -10,8 +10,13 @@ import { formStyles } from './FormStyles/FormStyles';
 interface Props {
   role: string;
   styles: object;
-  handleChange: (e: any) => void;
+  handleChange: (e: handleChangeEvent, child: React.ReactNode) => void;
 }
+
+type handleChangeEvent = React.ChangeEvent<{
+  name?: string | undefined;
+  value: unknown;
+}>;
 
 const useStyles = makeStyles((theme: Theme) => ({
   formControl: {

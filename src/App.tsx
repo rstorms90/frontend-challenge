@@ -17,11 +17,11 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme}>
       <SnackbarProvider>
         <div className="App">
-          <header className="App-header">
+          <section className="App-logo-form">
             <img src={logo} className="App-logo" alt="logo" />
             <h3>Annual Pancake Festival</h3>
             <EventSignUpForm />
-          </header>
+          </section>
         </div>
       </SnackbarProvider>
     </ThemeProvider>

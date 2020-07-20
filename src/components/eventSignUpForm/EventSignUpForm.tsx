@@ -19,7 +19,7 @@ const EventSignUpForm: React.FC = () => {
     setMessage,
   } = useContext(SnackbarContext);
 
-  const [values, handleChange] = useFormFields({
+  const [values, handleChange, reset] = useFormFields({
     firstName: '',
     lastName: '',
     email: '',
@@ -27,18 +27,27 @@ const EventSignUpForm: React.FC = () => {
     role: '',
   });
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  type formElem = React.FormEvent<HTMLFormElement>;
+
+  const handleSubmit = (e: formElem) => {
     e.preventDefault();
-    validateForm(values, {
+
+    const validForm = validateForm(values, {
       open,
-      setOpen,
       severity,
-      setSeverity,
       message,
+      setOpen,
+      setSeverity,
       setMessage,
     });
-    submitForm(values);
-    console.log(submitForm(values));
+
+    if (validForm) {
+      submitForm(values);
+      console.log(submitForm(values));
+      reset();
+    } else {
+      return false;
+    }
   };
 
   return (
@@ -50,7 +59,7 @@ const EventSignUpForm: React.FC = () => {
             inputProps={{ style: formStyles.textField }}
             label="First Name"
             variant="filled"
-            value={values.firstName}
+            value={values.firstName ? values.firstName : ''}
             onChange={handleChange}
           />
           <TextField
@@ -58,7 +67,7 @@ const EventSignUpForm: React.FC = () => {
             inputProps={{ style: formStyles.textField }}
             label="Last Name"
             variant="filled"
-            value={values.lastName}
+            value={values.lastName ? values.lastName : ''}
             onChange={handleChange}
           />
         </div>
@@ -68,7 +77,7 @@ const EventSignUpForm: React.FC = () => {
           inputProps={{ style: formStyles.textField }}
           label="E-mail"
           variant="filled"
-          value={values.email}
+          value={values.email ? values.email : ''}
           onChange={handleChange}
         />
         <div style={formStyles.flexContainer}>
@@ -77,11 +86,11 @@ const EventSignUpForm: React.FC = () => {
             inputProps={{ style: formStyles.textField }}
             label="Company"
             variant="filled"
-            value={values.company}
+            value={values.company ? values.company : ''}
             onChange={handleChange}
           />
           <FormSelect
-            role={values.role}
+            role={values.role ? values.role : ''}
             handleChange={handleChange}
             styles={formStyles}
           />

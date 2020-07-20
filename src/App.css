@@ -7,7 +7,7 @@
   pointer-events: none;
 }
 
-.App-header {
+.App-logo-form {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -26,10 +26,6 @@
   );
   background-size: 400% 400%;
   animation: movingGradient 15s ease infinite;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 @keyframes movingGradient {
