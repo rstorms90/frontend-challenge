@@ -80,6 +80,7 @@ export const overrideMaterialUIFormStyles = {
     },
     select: {
       color: lime,
+      marginTop: '8px',
     },
   },
 };

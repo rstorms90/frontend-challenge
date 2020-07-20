@@ -1,11 +1,13 @@
 import React from 'react';
-import { SnackbarProvider } from './context/SnackBarContext';
-import EventSignUpForm from './components/eventSignUpForm/EventSignUpForm';
-import logo from './assets/techstars-logo-white.svg';
+import { SnackbarProvider } from '../../context/SnackBarContext';
+import EventSignUpForm from '../eventSignUpForm/EventSignUpForm';
+import logo from '../../assets/techstars-logo-white.svg';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
-import { overrideMaterialUIFormStyles } from './components/eventSignUpForm/FormStyles/FormStyles';
+import { overrideMaterialUIFormStyles } from '../eventSignUpForm/FormStyles/FormStyles';
+import EventTitle from '../eventTitle/EventTitle';
 
 import './App.css';
+
 // .MuiFormLabel-root.Mui-focused
 const theme = createMuiTheme({
   // Override Material-UI input styles
@@ -19,7 +21,7 @@ const App: React.FC = () => {
         <div className="App">
           <section className="App-logo-form">
             <img src={logo} className="App-logo" alt="logo" />
-            <h3>Annual Pancake Festival</h3>
+            <EventTitle />
             <EventSignUpForm />
           </section>
         </div>
