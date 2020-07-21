@@ -1,14 +1,15 @@
 import React from 'react';
 import { animated, useTrail } from 'react-spring';
 
-import './styles/EventTitle.css';
+import { eventTitleStyles } from './EventTitleStyles/EventTitleStyles';
 
 const EventTitle = () => {
   // Create array for React Spring to map
-  const title = [`Annual`, `Pancake`, `Event`];
+  const title = [`Annual`, `Pancake`, `Festival`];
   // Title animation
   const titleSpring = useTrail(title.length, {
     from: {
+      padding: '0 3px',
       opacity: 0,
       x: 0,
       height: 0,
@@ -22,7 +23,7 @@ const EventTitle = () => {
   });
 
   return (
-    <div className="EventTitle">
+    <div style={eventTitleStyles.eventTitle}>
       {titleSpring.map(({ x, height, ...rest }, index) => (
         <animated.div
           style={{

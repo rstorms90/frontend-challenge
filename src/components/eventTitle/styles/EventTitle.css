@@ -1,8 +1,0 @@
-.EventTitle {
-  display: flex;
-  padding-bottom: 30px;
-}
-.EventTitle > div {
-  font-weight: 600;
-  padding: 0 5px 0 5px;
-}
